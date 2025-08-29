@@ -54,7 +54,6 @@ def user_profile_options_menu(user):
 def show_recommended_properties(user):
     """Display recommended properties for the user."""
     print("\nRecommended Properties:")
-    # For demo: just show top 5 properties (replace with your recommend logic)
     properties = load_properties()[:5]
     for prop in properties:
         print(f"{prop['type']} in {prop['location']} (ID: {prop['property_id']})")
@@ -93,6 +92,7 @@ def show_saved_properties(user):
         print(f"  Coordinates: {prop['coordinates']}")
         print()
 import os
+import subprocess
 from dotenv import load_dotenv
 load_dotenv()
 import sys
@@ -219,9 +219,10 @@ def launcher():
         main_menu()
     elif choice == '2':
         print("Launching Streamlit UI...")
-        venv_streamlit = os.path.join(os.path.dirname(sys.executable), 'streamlit')
-        cmd = f'"{venv_streamlit}" run Gr8-Summer-Stays/app.py'
-        os.system(cmd)
+        # venv_streamlit = os.path.join(os.path.dirname(sys.executable), 'streamlit')
+        # cmd = f'"{venv_streamlit}" run Gr8-Summer-Stays/app.py'
+        # os.system(cmd)
+        subprocess.run([sys.executable, "-m", "streamlit", "run", "Gr8-Summer-Stays/app.py"])
     elif choice == '3':
         print("Goodbye!")
         sys.exit(0)
